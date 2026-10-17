@@ -1,0 +1,27 @@
+#include <iostream>
+#include <string>
+#include <cstdlib>   // для std::abs
+
+struct Pole{
+    int x;
+    int y;
+};
+
+const std::string answer[] = {"No", "Yes"};
+
+int  queen_move(int, int, int, int);
+bool queen_move(Pole, Pole);
+
+int main(){
+    std::cout << answer[queen_move({3, 4}, {6, 7})];
+}
+
+int queen_move(int x1, int y1, int x2, int y2){
+    return (x1 == x2) || (y1 == y2) ||
+           (std::abs(x1 - x2) == std::abs(y1 - y2));
+}
+
+bool queen_move(Pole p1, Pole p2){
+    return (p1.x == p2.x) || (p1.y == p2.y) ||
+           (std::abs(p1.x - p2.x) == std::abs(p1.y - p2.y));
+}
