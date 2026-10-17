@@ -1,0 +1,24 @@
+#include <iostream>
+#include <string>
+
+struct Pole{
+    int x;
+    int y;
+};
+
+const std::string answer[] = {"No", "Yes"};
+
+int  rook_move(int, int, int, int);
+bool rook_move(Pole, Pole);
+
+int main(){
+    std::cout << answer[rook_move({3, 4}, {3, 7})];
+}
+
+int rook_move(int x1, int y1, int x2, int y2){
+    return (x1 == x2) || (y1 == y2);
+}
+
+bool rook_move(Pole p1, Pole p2){
+    return (p1.x == p2.x) || (p1.y == p2.y);
+}// write your code here
