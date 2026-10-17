@@ -1,0 +1,25 @@
+#include <iostream>
+#include <string>
+#include <cstdlib>   // для std::abs
+
+struct Pole{
+    int x;
+    int y;
+};
+
+const std::string answer[] = {"No", "Yes"};
+
+int  bishop_move(int, int, int, int);
+bool bishop_move(Pole, Pole);
+
+int main(){
+    std::cout << answer[bishop_move({3, 4}, {6, 7})];
+}
+
+int bishop_move(int x1, int y1, int x2, int y2){
+    return std::abs(x1 - x2) == std::abs(y1 - y2);
+}
+
+bool bishop_move(Pole p1, Pole p2){
+    return std::abs(p1.x - p2.x) == std::abs(p1.y - p2.y);
+}
