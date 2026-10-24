@@ -1,0 +1,40 @@
+#include <iostream>
+#include <cmath>
+#include <vector>
+#include <string>
+
+struct Pole {
+    int x; 
+    int y;
+};
+
+enum Figures {
+    ROOK,
+    BISHOP,
+    QUEEN,
+    KNIGHT,
+    KING,
+};
+
+const std::string answers[] = { "NO", "YES" };
+
+bool check_chess_move(Pole p1, Pole p2, int figure) {
+    int line = (p1.x == p2.x) || (p1.y == p2.y);
+    int diagonal = abs(p1.x - p2.x) == abs(p1.y - p2.y);
+    
+    switch (figure) {
+        case ROOK: return line;
+        case BISHOP: return diagonal;
+        case QUEEN: return line || diagonal;
+        case KNIGHT: return (abs(p1.x - p2.x) == 1 && abs(p1.y - p2.y) == 2) ||
+                            (abs(p1.x - p2.x) == 2 && abs(p1.y - p2.y) == 1);
+        case KING: return (abs(p1.x - p2.x) <= 1) && (abs(p1.y - p2.y) <= 1);
+        default: return 0;
+    }
+}
+
+int main() {
+    // Пример вызова из последнего скриншота
+    std::cout << answers[check_chess_move({3, 3}, {3, 6}, ROOK)];
+    return 0;
+}
