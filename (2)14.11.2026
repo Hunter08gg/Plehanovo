@@ -1,0 +1,18 @@
+#include <iostream>
+#include <vector>
+#include <sstream>
+
+int main()
+{
+    int num, x;
+    std::vector<int> v;
+    std::string line;
+    std::getline(std::cin, line);
+    std::istringstream my_stream(line);
+    while (my_stream >>x) {
+        v.push_back(x);
+    }
+    for (const auto& item : v) {
+        std::cout << item << " ";
+    }
+}
