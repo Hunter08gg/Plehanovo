@@ -1,0 +1,19 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+bool isValid(double a, double b, double c) {
+    if (a <= 0 || b <= 0 || c <= 0) return false;
+    return (a + b > c) && (a + c > b) && (b + c > a);
+}
+
+bool isRight(double a, double b, double c) {
+    if (a > b) swap(a, b);
+    if (b > c) swap(b, c);
+    if (a > b) swap(a, b);
+    return fabs(a*a + b*b - c*c) < 1e-9;
+}
+
+double perim(double a, double b, double c) {
+    return a + b + c;
+}
