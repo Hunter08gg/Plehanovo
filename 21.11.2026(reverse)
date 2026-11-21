@@ -1,0 +1,19 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <sstream>
+
+std::vector<int> to_vec2(int number) {
+    std::vector<int> ones;
+    for (; number > 0; number /= 2) {
+        ones.push_back(number % 2);
+    }
+    std::reverse(ones.begin(), ones.end());
+    return ones;
+}
+
+int main()
+{
+    for (const auto& one : to_vec2(15))
+        std::cout << one << " ";
+}
